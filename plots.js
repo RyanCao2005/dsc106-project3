@@ -23,8 +23,9 @@ async function loadData() {
     return { formattedData, rawData };
 }
 
-function drawChart(formattedData, rawData) {
-    const container = d3.select("#chart-container1");
+function drawChart(formattedData, rawData, containerSelector) {
+    const container = d3.select(containerSelector);
+    container.select("svg").remove()
 
    const svg = container.append("svg")
     .attr("width", 1500)
@@ -83,7 +84,7 @@ function drawChart(formattedData, rawData) {
   }
 
   loadData().then(({ formattedData, rawData }) => {
-    drawChart(formattedData, rawData);
+    drawChart(formattedData, rawData, "#chart-container1");
   });
 
 
@@ -110,8 +111,9 @@ async function loadData() {
 }
 
 // Draw chart
-function drawChart(formattedData, rawData) {
-  const container = d3.select("#chart-container2");
+function drawChart(formattedData, rawData, containerSelector) {
+  const container = d3.select(containerSelector);
+  container.select("svg").remove()
 
  const svg = container.append("svg")
   .attr("width", 1200)
@@ -170,7 +172,7 @@ const g = svg.append("g")
 }
 
 loadData().then(({ formattedData, rawData }) => {
-  drawChart(formattedData, rawData);
+  drawChart(formattedData, rawData, "#chart-container2");
 });
 
 // PLOT 3
@@ -196,8 +198,9 @@ async function loadData() {
   return { formattedData, rawData };
 }
 
-function drawChart(formattedData, rawData) {
-  const container = d3.select("#chart-container3");
+function drawChart(formattedData, rawData, containerSelector) {
+  const container = d3.select(containerSelector);
+  container.select("svg").remove()
 
  const svg = container.append("svg")
   .attr("width", 1200)
@@ -256,7 +259,7 @@ const g = svg.append("g")
 }
 
 loadData().then(({ formattedData, rawData }) => {
-  drawChart(formattedData, rawData);
+  drawChart(formattedData, rawData, "#chart-container3");
 });
 
 
@@ -283,11 +286,12 @@ return { formattedData, rawData };
 }
 
 // Draw chart
-function drawChart(formattedData, rawData) {
-const container = d3.select("#chart-container4");
+function drawChart(formattedData, rawData, containerSelector) {
+const container = d3.select(containerSelector);
+container.select("svg").remove()
 
 const svg = container.append("svg")
-.attr("width", 1200)
+.attr("width", 1500)
 .attr("height", 500);
 
 const margin = { top: 20, right: 100, bottom: 30, left: 50 },
@@ -343,7 +347,7 @@ subjectGroup.append("text")
 }
 
 loadData().then(({ formattedData, rawData }) => {
-drawChart(formattedData, rawData);
+drawChart(formattedData, rawData, "#chart-container4");
 });
 
 
