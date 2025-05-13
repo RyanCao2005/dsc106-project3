@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function() {
   const controls = container.append("div")
     .attr("class", "controls");
 
-  
+  // animation play button
   const playButton = controls.append("button")
     .attr("id", "playButton")
     .text("Play");
@@ -593,8 +593,6 @@ let currentData = [];
           averageLine.style("stroke", isDark ? "white" : "black");
         }
       }
-
-      
       function updateLegend(isDark, transition = null) {
         chartGroup.selectAll(".legend").remove();
         
