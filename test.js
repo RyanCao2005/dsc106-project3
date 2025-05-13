@@ -261,6 +261,11 @@ function updateChart(hour) {
     .attr("y", y(0))
     .attr("height", 0)
     .remove();
+
+    // Add color scale
+    const color = d3.scaleLinear()
+    .domain([35, 39]) // temp range
+    .range(["blue", "red"]);
   
   // Update + Enter merged
   const barsEnter = bars.enter()
@@ -270,33 +275,31 @@ function updateChart(hour) {
     .attr("width", x.bandwidth())
     .attr("y", y(0))
     .attr("height", 0)
-    .attr("fill", "black")
-    .attr('opacity', 0.8);
+    .attr("fill", d => color(d.Temperature))
+    .attr('opacity', 0.5);
 
-    // Add color scale
-    const color = d3.scaleLinear()
-    .domain([35, 39]) // temp range
-    .range(["blue", "red"]);
+    
   
   
   // Merge and apply shared behaviors
   barsEnter.merge(bars)
     .on("mouseover", function (event, d) {
-      d3.select(this).attr("fill", d => color(d.Temperature)); // Highlight on hover
+      d3.select(this).attr('opacity', 1); // Highlight on hover
       tooltip.transition().duration(200).style("opacity", 0.9);
       tooltip.html(`Mouse: ${d.MouseID}<br>Temp: ${d.Temperature.toFixed(2)}°C`)
         .style("left", (event.pageX) + "px")
         .style("top", (event.pageY - 28) + "px");
     })
     .on("mouseout", function () {
-      d3.select(this).attr("fill", "black"); // Reset color
+      d3.select(this).attr("opacity", 0.5); // Reset color
       tooltip.transition().duration(500).style("opacity", 0);
     })
     .transition()
     .duration(800)
     .attr("x", d => x(d.MouseID))
     .attr("y", d => y(d.Temperature))
-    .attr("height", d => height - y(d.Temperature));
+    .attr("height", d => height - y(d.Temperature))
+    .attr("fill", d => color(d.Temperature));
 }
 
 // Dropdown event for dataset
