@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+=======
+// // import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
+>>>>>>> b893fa866e1a5fc050cd5fe31d629fc672d4e994
 // Time Series commented out due to readability, may use for future analysis
 // // PLOT 1
 
@@ -82,7 +86,13 @@ import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7.9.0/+esm';
 //     .text(d => d.name);
 // }
 
+<<<<<<< HEAD
 // let data = loadData;
+=======
+  // loadData().then(({ formattedData, rawData }) => {
+  //   drawChart(formattedData, rawData);
+  // });
+>>>>>>> b893fa866e1a5fc050cd5fe31d629fc672d4e994
 
 
 // // PLOT 2
